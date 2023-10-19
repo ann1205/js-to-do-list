@@ -108,6 +108,8 @@ export class Todo {
       el.classList.toggle('task--done')
       btn.classList.toggle('task__button--do')
       btn.classList.toggle('task__button--done')
+
+      this.#saveData()
     }
   }
 
@@ -122,7 +124,7 @@ export class Todo {
     }
   }
 
-  static #handleCancel = (data) => {
+  static #handleCancel = (data) => () => {
     if (confirm('Видалити задачу?')) {
       const result = this.#deleteById(data.id)
       if (result) {
